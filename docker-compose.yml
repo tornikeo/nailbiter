@@ -3,7 +3,8 @@ version: "3.7"
 services: 
     web:
         build: ./app
-        command: python manage.py migrate --noinput 
+        command: python manage.py flush --no-input
+        command: python manage.py migrate --no-input 
         command: python manage.py runserver 0.0.0.0:8000
         volumes: 
             - ./app/:/usr/src/app/
