@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ../app/env/bin/fab \
     deploy:host=tornikeo@$REMOTE_ADDRESS \
