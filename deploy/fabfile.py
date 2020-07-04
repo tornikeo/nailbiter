@@ -48,7 +48,7 @@ def _create_env_file(source_folder):
     sudo(f"sed 's/DEBUG_VALUE/{DEBUG}/g; " 
              f" s/SECRET_KEY_VALUE/{secret_key}/g; "
              f" s/DJANGO_ALLOWED_HOSTS_VALUE/{env.host}/g' "
-             f" env.template | tee {source_folder}/.dev.env ")
+             f" {source_folder}/deploy/env.template | tee {source_folder}/.dev.env ")
 
 def _run_docker_compose(source_folder):
     sudo(f'cd {source_folder} && ./rebuild.sh & disown')
