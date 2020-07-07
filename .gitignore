@@ -1,6 +1,15 @@
+#Exclude Dev-Specific files and dirs
 .vscode
 __pycache__
 db.sqlite3
+
+#Exclude python env
 env
+
+#Exclude env files
 .env
 .dev.env
+
+#Exclude images
+*.jpg
+*.png
