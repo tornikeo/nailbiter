@@ -8,3 +8,9 @@ runlocal:
 	 
 test:
 	cd app && python manage.py test
+
+unit_test:
+	cd app && python manage.py test --pattern="tests*.py"
+
+functional_test:
+	cd app && python manage.py test functional_tests
