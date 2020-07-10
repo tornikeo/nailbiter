@@ -13,3 +13,7 @@ env
 #Exclude images
 *.jpg
 *.png
+
+#Exclude model data from vcs
+app/image_classifier/model/data
+app/image_classifier/model/notebooks/.ipynb_checkpoints
