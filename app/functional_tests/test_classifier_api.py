@@ -15,20 +15,19 @@ class ClassifierTests(FunctionalTestCase):
         negative_images = glob.glob(os.path.join(negative_img_dir,'*.jpg'))
 
         #User creates a json request with first positive image
-        image = Utils.read_img_to_array(positive_images[0])
+        image = Utils.read_img_to_array(positive_images[0],
+            size=(32,32)
+        )
         
         # User sends the request
-        request = {
-            'image': image.tolist()
+        data = {
+            'instances': [image.tolist()]
         }
         response = self.client.get('/image_classifier', 
-            data = request
+            data = data
         ).json()
 
-        # Status must be OK
-        self.assertEquals(response['status'].lower(), 'ok')
-
         # Prediction must be an array
-        self.assertIsInstance(response['prediction'], list)
+        self.assertIsInstance(response['predictions'], list)
 
 

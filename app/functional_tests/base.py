@@ -1,15 +1,19 @@
 from django.test import LiveServerTestCase
-import PIL.Image as Image
+import cv2
 import numpy as np
 
 
 class Utils:
     @staticmethod
-    def read_img_to_array(filepath):
-        image = Image.open(filepath)
-        im_arr = np.fromstring(image.tobytes(), dtype=np.uint8)
-        im_arr = im_arr.reshape((image.size[1], image.size[0], 3))
-        return im_arr
+    def read_img_to_array(filepath, size=(64,64), gray=True):
+        image = cv2.imread(filepath)
+        image = cv2.resize(image, size)
+        if gray:
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = np.repeat(image[:,:,np.newaxis],3,axis=-1)
+
+        # print(image.shape)
+        return image
 
 class FunctionalTestCase(LiveServerTestCase):
     pass
