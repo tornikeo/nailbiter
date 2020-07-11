@@ -1,6 +1,13 @@
 version: "3.7"
 
 services: 
+    tf_serving:
+        build: ./app/image_classifier/model/
+        ports:
+            - 8500:8500
+            - 8501:8501
+        volumes:
+            - ./app/image_classifier/model/export:/models/model
     web:
         build: ./app
         command: python manage.py flush --no-input
