@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from image_classifier import urls as image_classifier_urls
+from homepage import urls as homepage_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(image_classifier_urls))
+    path('', include(image_classifier_urls)),
+    path('', include(homepage_urls)),
 ]
