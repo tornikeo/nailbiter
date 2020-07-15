@@ -1,6 +1,7 @@
 #Exclude Dev-Specific files and dirs
 __pycache__
 db.sqlite3
+geckodriver.log
 
 #Exclude python env
 env
