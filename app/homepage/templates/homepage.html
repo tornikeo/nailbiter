@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block body %} 
     <h1>Don't bite your nails!</h1>
+    <div id="container">
+        <video autoplay playsinline muted id="videoElement">
+        
+        </video>
+        <canvas id="canvasElement">
+        </canvas>
+        <span id="predictionElement"></span>
+
+        <button id="recordButton" class='off'>Record</button>
+    </div>
 {% endblock %}
