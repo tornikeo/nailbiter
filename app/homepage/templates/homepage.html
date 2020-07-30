@@ -1,14 +1,31 @@
 {% extends 'base.html' %}
-{% block body %} 
-    <h1>Don't bite your nails!</h1>
-    <div id="container">
-        <video autoplay playsinline muted id="videoElement">
-        
-        </video>
-        <canvas id="canvasElement">
-        </canvas>
-        <span id="predictionElement"></span>
+{% block body %}
 
-        <button id="recordButton" class='off'>Record</button>
-    </div>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" id="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">The nailbiter!</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="inner cover">
+        <video class="rounded border-0" autoplay playsinline muted id="videoElement">
+        </video>
+        
+        <!-- <canvas id="canvasElement">
+        </canvas> -->
+        
+        <h1 class="cover-heading">Don't bite your nails!</h1>
+        <p class="lead">This application says: <span id="predictionElement"></span>"</p>
+        <p class="lead">
+            <button id="recordButton" class='btn btn-lg btn-secondary'>Record</button>
+        </p>
+    </main>
+
+</div>
 {% endblock %}

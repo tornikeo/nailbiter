@@ -8,7 +8,6 @@ let videoElement;
 let recordButton;
 let predictionElement;
 
-
 const predictNailbiting = async () => {
   console.log('loading model');
   model = await tf.loadLayersModel(MODEL_PATH)
@@ -59,7 +58,14 @@ const getPrediction = async (frame) => {
 }
 
 const displayPrediction = (prediction, element) => {
-  element.textContent = `You are biting nails with ${prediction[1].toFixed(2)}%`
+  // console.log(element)
+  if (prediction[1] > .75) {
+    element.textContent = `You are <b> biting </b> nails. I am ${(prediction[1]*100).toFixed(2)}% sure.`
+  } else if (prediction[1] > .25) {
+    element.textContent = `I'm not sure. I think about ${(prediction[1]*100).toFixed(2)}% that you are biting nails.`
+  } else {
+    element.textContent = `You are <b> not biting </b> nails. I am ${(prediction[2]*100).toFixed(2)}% sure.`
+  }
 }
 
 const init = async () => {
@@ -90,18 +96,16 @@ const init = async () => {
   recordButton.addEventListener(
     'click',
     ({target}) => {
-      if (target.className === 'on') {
-        target.className = 'off';
+      if (target.textContent === 'Stop record') {
         target.textContent = 'Record'
         stopLoop()
       } else {
-        target.className = 'on';
         target.textContent = 'Stop record';
         startLoop(async () => {
           let frame = await getImage();
           let prediction = await getPrediction(frame);
           displayPrediction(prediction, predictionElement)
-        }, 1000)
+        }, 300)
       }
     }
   )

@@ -13,8 +13,6 @@ servelocal:
 	 -v "$(CURDIR)/$(MODEL_DIR)/export:/models/model" \
 	  tensorflow/serving 
 
-	
-
 test_all:
 	cd app && python manage.py test
 
